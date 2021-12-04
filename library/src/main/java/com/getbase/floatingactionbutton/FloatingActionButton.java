@@ -231,7 +231,7 @@ public class FloatingActionButton extends ImageButton {
 
     LayerDrawable layerDrawable = new LayerDrawable(
         new Drawable[] {
-            getResources().getDrawable(mSize == SIZE_NORMAL ? R.drawable.fab_bg_normal : R.drawable.fab_bg_mini),
+            mSize == SIZE_NORMAL ? R.drawable.fab_bg_normal : BitmapConstants.fab_bg_mini,
             createFillDrawable(strokeWidth),
             createOuterStrokeDrawable(strokeWidth),
             getIconDrawable()
