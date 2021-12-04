@@ -20,11 +20,11 @@ import android.graphics.drawable.StateListDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.os.Build;
 import android.os.Build.VERSION_CODES;
-import android.support.annotation.ColorRes;
-import android.support.annotation.DimenRes;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.IntDef;
-import android.support.annotation.NonNull;
+import androidx.annotation.ColorRes;
+import androidx.annotation.DimenRes;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.IntDef;
+import androidx.annotation.NonNull;
 import android.util.AttributeSet;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -72,19 +72,17 @@ public class FloatingActionButton extends ImageButton {
   }
 
   void init(Context context, AttributeSet attributeSet) {
-    TypedArray attr = context.obtainStyledAttributes(attributeSet, R.styleable.FloatingActionButton, 0, 0);
-    mColorNormal = attr.getColor(R.styleable.FloatingActionButton_fab_colorNormal, getColor(android.R.color.holo_blue_dark));
-    mColorPressed = attr.getColor(R.styleable.FloatingActionButton_fab_colorPressed, getColor(android.R.color.holo_blue_light));
-    mColorDisabled = attr.getColor(R.styleable.FloatingActionButton_fab_colorDisabled, getColor(android.R.color.darker_gray));
-    mSize = attr.getInt(R.styleable.FloatingActionButton_fab_size, SIZE_NORMAL);
-    mIcon = attr.getResourceId(R.styleable.FloatingActionButton_fab_icon, 0);
-    mTitle = attr.getString(R.styleable.FloatingActionButton_fab_title);
-    mStrokeVisible = attr.getBoolean(R.styleable.FloatingActionButton_fab_stroke_visible, true);
-    attr.recycle();
+    mColorNormal = 0x01060013;
+    mColorPressed = 0x01060012;
+    mColorDisabled = 0x01060000;
+    mSize = SIZE_NORMAL;
+    mIcon = 0;
+    mTitle = " ";
+    mStrokeVisible = true;
 
     updateCircleSize();
-    mShadowRadius = getDimension(R.dimen.fab_shadow_radius);
-    mShadowOffset = getDimension(R.dimen.fab_shadow_offset);
+    mShadowRadius = 0x7f030006;
+    mShadowOffset = 0x7f030005;
     updateDrawableSize();
 
     updateBackground();
@@ -95,7 +93,7 @@ public class FloatingActionButton extends ImageButton {
   }
 
   private void updateCircleSize() {
-    mCircleSize = getDimension(mSize == SIZE_NORMAL ? R.dimen.fab_size_normal : R.dimen.fab_size_mini);
+    mCircleSize = mSize == SIZE_NORMAL ? 0x7f030008 : 0x7f030007;
   }
 
   public void setSize(@FAB_SIZE int size) {
@@ -214,7 +212,7 @@ public class FloatingActionButton extends ImageButton {
   }
 
   TextView getLabelView() {
-    return (TextView) getTag(R.id.fab_label);
+    return (TextView) getTag(0x7f040001);
   }
 
   public String getTitle() {
@@ -228,7 +226,7 @@ public class FloatingActionButton extends ImageButton {
   }
 
   void updateBackground() {
-    final float strokeWidth = getDimension(R.dimen.fab_stroke_width);
+    final float strokeWidth = 0x7f030009;
     final float halfStrokeWidth = strokeWidth / 2f;
 
     LayerDrawable layerDrawable = new LayerDrawable(
@@ -239,7 +237,7 @@ public class FloatingActionButton extends ImageButton {
             getIconDrawable()
         });
 
-    int iconOffset = (int) (mCircleSize - getDimension(R.dimen.fab_icon_size)) / 2;
+    int iconOffset = (int) (mCircleSize - 0x7f030001) / 2;
 
     int circleInsetHorizontal = (int) (mShadowRadius);
     int circleInsetTop = (int) (mShadowRadius - mShadowOffset);
