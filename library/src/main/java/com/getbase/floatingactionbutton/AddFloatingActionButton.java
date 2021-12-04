@@ -8,9 +8,10 @@ import android.graphics.Paint.Style;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.Shape;
-import android.support.annotation.ColorRes;
-import android.support.annotation.DrawableRes;
+import androidx.annotation.ColorRes;
+import androidx.annotation.DrawableRes;
 import android.util.AttributeSet;
+import android.graphics.Color;
 
 public class AddFloatingActionButton extends FloatingActionButton {
   int mPlusColor;
@@ -30,7 +31,7 @@ public class AddFloatingActionButton extends FloatingActionButton {
   @Override
   void init(Context context, AttributeSet attributeSet) {
     TypedArray attr = context.obtainStyledAttributes(attributeSet, R.styleable.AddFloatingActionButton, 0, 0);
-    mPlusColor = attr.getColor(R.styleable.AddFloatingActionButton_fab_plusIconColor, getColor(android.R.color.white));
+    mPlusColor = attr.getColor(R.styleable.AddFloatingActionButton_fab_plusIconColor, getColor(Color.WHITE));
     attr.recycle();
 
     super.init(context, attributeSet);
@@ -61,11 +62,11 @@ public class AddFloatingActionButton extends FloatingActionButton {
 
   @Override
   Drawable getIconDrawable() {
-    final float iconSize = getDimension(R.dimen.fab_icon_size);
+    final float iconSize = 0x7f030001;
     final float iconHalfSize = iconSize / 2f;
 
-    final float plusSize = getDimension(R.dimen.fab_plus_icon_size);
-    final float plusHalfStroke = getDimension(R.dimen.fab_plus_icon_stroke) / 2f;
+    final float plusSize = 0x7f030003;
+    final float plusHalfStroke = 0x7f030004 / 2f;
     final float plusOffset = (iconSize - plusSize) / 2f;
 
     final Shape shape = new Shape() {
